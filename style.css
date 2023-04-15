@@ -101,6 +101,114 @@ button:active{
     align-items: center;
     margin-bottom: auto;
 }
+.container{
+    padding: 50px 0;
+    
+    }
+    .row{
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 12px ;
+    }
+    .SignUP{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 90%;
+    
+        max-width:1100px ;
+        height: 700px;
+        box-shadow: 0 20px 80px 0 rgb(0,0, 0,0.55);
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+    }
+    .signup_half{
+        width: 50%;
+        padding: 40px 72px;
+    }
+    .signup_logo{
+        background-color:white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .logo_title{
+        font-size: 32px;
+        margin: 12px ;
+    }
+    .logo_wrapper{
+        width: 100%;
+        padding: 16px;
+    }
+    .logo{
+        width: 100%;
+       
+    
+    }
+    .logo_description{
+        text-align: center;
+    }
+    .signup_form{
+        background-color: slateblue;
+    }
+    .section_title{
+        text-align: center;
+        font-size: 48px;
+        margin-bottom:60px ;
+    }
+    .story_img{
+        width: 100%;
+    }
+    .story_wrapper{
+        position: relative;
+        border-radius: 20px;
+        box-shadow: 0 20px 80px 0 rgb(0,0, 0,0.45);
+        overflow: hidden;
+        margin-bottom: 20px;
+        }
+        .story_wrapper:hover .story_img{
+            transform: scale(1.07);
+            filter: blur(5px);
+        }
+    .story_wrapper:hover .story_description{
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+    .story_description{
+        position: absolute;
+        top: 50%;
+        left: 90px;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: opacity 300ms,transform 450ms ease;
+        color: white;
+        max-width: 550px;
+    }
+    .story_wrapper:hover .story_wrapper-bg{
+        opacity: 0.7;
+    }
+    .story_wrapper-bg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color:#1c1d25;
+        opacity: 0;
+    }
+    .story_description_title{
+        font-size: 40px;
+    
+    }
+    .story_description_sub-title{
+        margin-top: 8px;
+    }
+    .story_description_para{
+        margin: 16px 0;
+    }
 .head_description{
     width: 100%;
     display: flex;
