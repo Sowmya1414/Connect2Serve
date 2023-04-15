@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/e61293bf49.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <section id="Landing">
@@ -27,14 +29,100 @@
                 <h2>
                     Find Your Event with <span class="purple"> Connect2Serve</span>
                 </h2>
-                <button class="btn">Volunteer login</button>
+              
             </div>
             <figure class="bg-wrapper">
                 <img src="./bg1.png" alt="bg">
             </figure>
             </div>
         </header>
-        
+        <div class="popup">
+            <div class="popup_half popup_svg">
+                <h2 class="popup_title popup_title-svg">Welcome to Connect2Serve</h2>
+                <figure class="popup_logo_wrapper">
+                    <img src="undraw_mobile_encryption_re_yw3o.svg" class="popup_logo" alt="">
+                </figure>
+                <h3 class="popup_description">
+                    Sign up to find an event/Oraganize an event.
+                </h3>
+            </div>
+            <div class="popup_half popup_form">
+                <h2 class="popup_title popup_title-form">Sign Up</h2>
+                <form id="SignUP_form" action="">
+                    <div class="form_item">
+                        <label for="username" class="form_item_label">Username</label>
+                        <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
+
+                    </div>
+                    <div class="form_item">
+                        <label for="email" class="form_item_label">Email</label>
+                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
+
+                    </div>
+                    <div class="form_item">
+                        <label for="password" class="form_item_label">Password</label>
+                        <input class="input" type="password" name="password" required></input>
+
+                    </div>
+                   
+                   <div class="rolle">
+                    <h4 class="RoleOfPerson">Select your Role</h4>
+                    
+                    <input type="radio" id="volunteer" class="rbtn" name="role" value="volunteer">
+                    <label for="volunteer">Volunteer</label>
+                    <input type="radio" id="organizer" class="rbtn" name="role" value="organizer">
+                    <label for="organizer">Organizer</label>
+                </div>
+                    
+              
+                <div class="Districts">
+                    <h4 class="districtName">Select Your district</h4>
+                    <select id="District" name="district">
+                        <option value="">Select a State</option>
+                        <option value="Amalapuram">Amalapuram</option>
+                        <option value="Anakapalli">Anakapalli</option>
+                        <option value="Ananthapuram">Ananthapuram</option>
+                        <option value="Bapatla">Bapatla</option>
+                        <option value="Bhimavaram">Bhimavaram</option>
+                        <option value="Chittoor">Chittoor</option>
+                        <option value="Eluru">Eluru</option>
+                        
+                        <option value="Guntur">Guntur</option>
+                        <option value="Kakinada">Kakinada</option>
+                        <option value="Kurnool">Kurnool</option>
+                       
+                        <option value="Kadapa">Kadapa</option>
+                        <option value="Machilipatnam">Machilipatnam</option>
+                        <option value="Nandyala">Nandyala</option>
+                        <option value="Narasaraopeta">Narasaraopeta</option>
+                        <option value="Nellore">Nellore</option>
+                        <option value="Ongole">Ongole</option>
+                        <option value="Parvathipuram">Parvathipuram</option>
+                        <option value="Paderu">Paderu</option>
+                        <option value="Puttaparthi">Puttaparthi</option>
+                        <option value="Rayachoti">Rayachoti</option>
+                        
+                        <option value="Rajahmahendravaram">Rajahmahendravaram</option>
+                        <option value="Srikakulam">Srikakulam</option>
+                        <option value="Tirupati">Tirupati</option>
+                        <option value="Visakhapatnam">Visakhapatnam</option>
+                        <option value="Vizianagaram">Vizianagaram</option>
+                        <option value="Vijayawada">Vijayawada</option>
+                       
+                      </select>
+                      
+                </div>
+                <button id="form_submit" class="form-submit" >Sign Up</button>
+                </form>
+                <div class="popup_overlay popup_overlay-loading">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="popup_overlay popup_overlay-success">
+                  Signed Up SuccessFully!
+                </div>
+            </div>
+            <i class="fas fa-times popup_exit click"></i>
+        </div>
     </section>
     <section id="stories">
         <div class="container">
@@ -45,7 +133,7 @@
                 <ul class="stories_list">
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Librarybro.jpg" class="story_img" alt="">
+                            <img src="Clean_5822.jpg" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -63,7 +151,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Librarybro.jpg" class="story_img" alt="">
+                            <img src="Clean_5822.jpg" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -81,7 +169,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Librarybro.jpg" class="story_img" alt="">
+                            <img src="Clean_5822.jpg" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">

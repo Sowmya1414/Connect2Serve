@@ -88,18 +88,164 @@ button{
     cursor: pointer; 
    
 }
-button:active{
-    transform:translateY(2px);
+/*popup*/
+.popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90%;
+    max-width: 1100px;
+    height: 700px;
+    box-shadow: 0 20px 80px 0 rgb(0,0, 0,0.55);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
 }
-.btn{
+.popup_half{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;align-items: center;
+    position: relative;
+}
+:placeholder-shown{
+    color: rgb(89, 102, 246);
+}
+.popup_svg{
+background-color: #7342d6;
+color: white;
+display: flex;
+flex-direction: column;
+justify-content: center;align-items: center;
+}
+.popup_title-svg{
+    padding: 24px;
+    margin-bottom: 20px;
+}
+.popup_logo_wrapper{
+    margin-bottom: 24px;
+}
+.popup_logo{
+    width: 100%;
+}
+.popup_form{
+    background-color:#fff;
+    color:#7342d6;
+}
+.form_item
+{
+    margin-bottom: 20px;
+
+}
+.districtName{
+    margin-bottom: 12px;
+}
+.Districts{
+    padding:24px 0px;
+   
+}
+.form-submit{
     background-color: #7342d6;
-    padding: 12px 24px;
+    border: 2px solid #7342d6;
     color: white;
-    font-size: 20px;
-    border-radius: 4px;
-    border: none;
-    align-items: center;
-    margin-bottom: auto;
+    width: 100%;
+    font-weight: 700;
+    max-width: 240px;
+    padding: 12px 24px;
+    font-size: 25px;
+    transition: all 300ms ease;
+    transform: translatex(1px);
+}
+.form-submit:hover{
+    border-color: #915ef7;
+    
+}
+.form-submit:active{
+    border-color: #7342d6;
+    color: #7342d6;
+}
+input{
+    width: 100%;
+    background-color:#fff;
+    color:black;
+    outline: none;
+    border:1px solid #7342d6;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    height: 40px;
+}
+input:hover{
+    border-color:#915ef7;
+}
+input:focus{
+    border-color: #7342d6;
+}
+.rbtn{
+    width: auto;
+    height: 16px;
+    margin-top: 12px;
+    padding-left: 12px;
+}
+label{
+    font-size: 14px;
+font-weight:bold;
+}
+.popup_overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;align-items: center;
+    z-index: -1;
+   
+}
+.popup_overlay-loading{
+    background-color:#fff;
+    font-size: 80px;
+   
+}
+.popup_overlay-success{
+    background-color:#fff;
+    font-size: 40px;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+}
+.fa-spinner{
+animation: spinner 750ms infinite linear;
+}
+@keyframes spinner{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+} 
+.popup_exit{
+position: absolute;
+top: 30px;
+right: 40px;
+color: #7342d6;
+font-size: 36px;
+z-index: 100;
+}
+.click{
+    cursor: pointer;
+    transform: all 300ms ease;
+}
+.click:hover{
+    transform: scale(1.1);
+}
+.click:active{
+    transform: scale(0.8);
+}
+#stories{
+    background-color: rgba(115, 66, 214, 0.1);
 }
 .container{
     padding: 50px 0;
@@ -111,49 +257,11 @@ button:active{
         margin: 0 auto;
         padding: 0 12px ;
     }
-    .SignUP{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        width: 90%;
-    
-        max-width:1100px ;
-        height: 700px;
-        box-shadow: 0 20px 80px 0 rgb(0,0, 0,0.55);
-        border-radius: 20px;
-        overflow: hidden;
-        display: flex;
-    }
-    .signup_half{
-        width: 50%;
-        padding: 40px 72px;
-    }
-    .signup_logo{
-        background-color:white;
+    .stories_list{
         display: flex;
         flex-direction: column;
-        justify-content: center;
     }
-    .logo_title{
-        font-size: 32px;
-        margin: 12px ;
-    }
-    .logo_wrapper{
-        width: 100%;
-        padding: 16px;
-    }
-    .logo{
-        width: 100%;
-       
     
-    }
-    .logo_description{
-        text-align: center;
-    }
-    .signup_form{
-        background-color: slateblue;
-    }
     .section_title{
         text-align: center;
         font-size: 48px;
@@ -167,7 +275,7 @@ button:active{
         border-radius: 20px;
         box-shadow: 0 20px 80px 0 rgb(0,0, 0,0.45);
         overflow: hidden;
-        margin-bottom: 20px;
+        margin-bottom: 60px;
         }
         .story_wrapper:hover .story_img{
             transform: scale(1.07);
