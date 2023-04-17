@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"/>
     <title>Document</title>
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/e61293bf49.js" crossorigin="anonymous"></script>
@@ -13,7 +13,7 @@
     <section id="Landing">
         <nav>
             <div class="container">
-            <img class="logo" src="./prologo.png" alt="logo">
+            <img class="logo" src="{{url_for('static',filename='prologo.png')}}" alt="logo">
             <ul class="nav_links">
                 <li><a href="#" class="nav_link">Home</a></li>
                 <li><a href="#"  class="nav_link">Contact</a></li>
@@ -32,7 +32,7 @@
               
             </div>
             <figure class="bg-wrapper">
-                <img src="./bg1.png" alt="bg">
+                <img src="{{url_for('static',filename='bg1.png')}}" alt="bg">
             </figure>
             </div>
         </header>
@@ -40,7 +40,7 @@
             <div class="popup_half popup_svg">
                 <h2 class="popup_title popup_title-svg">Welcome to Connect2Serve</h2>
                 <figure class="popup_logo_wrapper">
-                    <img src="undraw_mobile_encryption_re_yw3o.svg" class="popup_logo" alt="">
+                    <img src="{{url_for('static',filename='undraw_mobile_encryption_re_yw3o.svg')}}" class="popup_logo" alt="">
                 </figure>
                 <h3 class="popup_description">
                     Sign up to find an event/Oraganize an event.
@@ -48,7 +48,7 @@
             </div>
             <div class="popup_half popup_form">
                 <h2 class="popup_title popup_title-form">Sign Up</h2>
-                <form id="SignUP_form" action="">
+                <form id="SignUP_form" action="{{url_for('signup')}}" method='POST'>
                     <div class="form_item">
                         <label for="username" class="form_item_label">Username</label>
                         <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
@@ -133,7 +133,7 @@
                 <ul class="stories_list">
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Clean_5822.jpg" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='Clean_5822.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -151,7 +151,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Clean_5822.jpg" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='Clean_5822.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -169,7 +169,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Clean_5822.jpg" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='Clean_5822.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
