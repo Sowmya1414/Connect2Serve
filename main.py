@@ -10,7 +10,8 @@ def signup():
         password=request.form.get('password')
         role=request.form.get('role')
         district=request.form.get('district')
-        return 'your name is' + username
+        k=username+" "+email+ " " + password+" "+role+" "+district
+        return k
     return render_template('index.html')
 
 
