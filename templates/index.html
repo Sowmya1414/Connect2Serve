@@ -6,8 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"/>
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
     <script src="https://kit.fontawesome.com/e61293bf49.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("Vf4u076Aejfoy8dnC");
+   })();
+</script>
+   
 </head>
 <body>
     <section id="Landing">
@@ -17,15 +26,16 @@
             <ul class="nav_links">
                 <li><a href="#" class="nav_link">Home</a></li>
                 <li><a href="#"  class="nav_link">Contact</a></li>
-                <li><a href="#"  class="nav_link nav_link-book">Login</a></li>
-                <li><a href="#"  class="nav_link nav_link-book">Sign Up</a></li>
+                <li><button  class="nav_link nav_link-book" onclick="togglelogin()">login</button></li>
+                <li><button  class="nav_link nav_link-book" onclick="togglePopUp()">Sign Up</button></li>
             </ul>
         </div>
         </nav>
         <header>
             <div class="head_container">
                 <div class="head_description">
-                <h1>India's most awarded online library platform</h1>
+                <h1>Be the change you wish to see in the world  
+                </h1>
                 <h2>
                     Find Your Event with <span class="purple"> Connect2Serve</span>
                 </h2>
@@ -36,6 +46,48 @@
             </figure>
             </div>
         </header>
+        <button class="mail_btn click">
+            <i class="fas fa-envelope"></i>
+        </button>
+        <div class="login">
+            <div class="login_half login_svg">
+                <h2 class="login_title login_title-svg">Welcome to Connect2Serve</h2>
+                <figure class="login_logo_wrapper">
+                    <img src="{{url_for('static',filename='undraw_access_account_re_8spm.svg')}}" class="login_logo" alt="">
+                </figure>
+                <h3 class="login_description">
+                   login to find an event/Oraganize an event.
+                </h3>
+            </div>
+            <div class="login_half login_forms">
+                <i class="fas fa-times login_exit click" onclick="togglelogin()"></i>
+                <h2 class="login_title login_title-form">Login</h2>
+                <form id="login_form" onsubmit="contact(event)">
+                    <div class="form_item">
+                        <label for="username" class="form_item_label">Username</label>
+                        <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
+
+                    </div>
+              
+                    <div class="form_item">
+                        <label for="email" class="form_item_label">Email</label>
+                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
+
+                    </div>
+                    <div class="form_item">
+                        <label for="password" class="form_item_label">Password</label>
+                        <input class="input" type="password" name="password" required></input>
+
+                    </div>
+                 
+              
+               
+                <button id="form_submit" class="form-submit" >Login</button>
+                </form>
+               
+            </div>
+            
+        </div>
         <div class="popup">
             <div class="popup_half popup_svg">
                 <h2 class="popup_title popup_title-svg">Welcome to Connect2Serve</h2>
@@ -47,6 +99,7 @@
                 </h3>
             </div>
             <div class="popup_half popup_form">
+                <i class="fas fa-times popup_exit click" onclick="togglePopUp()"></i>
                 <h2 class="popup_title popup_title-form">Sign Up</h2>
                 <form id="SignUP_form" action="{{url_for('signup')}}" method='POST'>
                     <div class="form_item">
@@ -62,6 +115,11 @@
                     <div class="form_item">
                         <label for="password" class="form_item_label">Password</label>
                         <input class="input" type="password" name="password" required></input>
+
+                    </div>
+                    <div class="form_item">
+                        <label for="PhNumber" class="form_item_label">Phone Number</label>
+                        <input class="input" type="number" name="PhNumber" minlength="10" required></input>
 
                     </div>
                    
@@ -121,7 +179,7 @@
                   Signed Up SuccessFully!
                 </div>
             </div>
-            <i class="fas fa-times popup_exit click"></i>
+            
         </div>
     </section>
     <section id="stories">
@@ -133,14 +191,14 @@
                 <ul class="stories_list">
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="{{url_for('static',filename='Clean_5822.jpg')}}" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='volunteer2.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
-                                    story title
+                                    Beach Cleaning
                                 </h3>
                                 <h4 class="story_description_sub-title">
-                                    descript
+                                    RK Beach Vizag
                                 </h4>
                                 <p class="story_description_para">
                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
@@ -151,14 +209,14 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="{{url_for('static',filename='Clean_5822.jpg')}}" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='volunteer1.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
-                                    story title
+                                    Food service at Orphanage 
                                 </h3>
                                 <h4 class="story_description_sub-title">
-                                    descript
+                                    Vizianagaram
                                 </h4>
                                 <p class="story_description_para">
                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
@@ -169,14 +227,14 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="{{url_for('static',filename='Clean_5822.jpg')}}" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='volunterrr.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
-                                    story title
+                                    Old Age homes 
                                 </h3>
                                 <h4 class="story_description_sub-title">
-                                    descript
+                                    Guntur
                                 </h4>
                                 <p class="story_description_para">
                                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
@@ -189,5 +247,25 @@
             </div>
         </div>
     </section>
+    <footer>
+        <div class="container">
+            <div class="row row_column">
+                <a href="#">
+                <figure class="footer_logo">
+                    <img src="{{url_for('static',filename='prologo.png')}}" alt="" class="footer_logo-img">
+                </figure>
+            </a>
+            <div class="footer_list">
+                <a href="" class="footer_link">Home</a>
+                <a href="" class="footer_link no-cursor">About</a>
+               
+                <a href="" class="footer_link no-cursor">Contact</a>
+            </div>
+            <div class="footer_copyright">
+                Copyright &copy; Connect2Serve
+            </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
