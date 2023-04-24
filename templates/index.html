@@ -62,7 +62,7 @@
             <div class="login_half login_forms">
                 <i class="fas fa-times login_exit click" onclick="togglelogin()"></i>
                 <h2 class="login_title login_title-form">Login</h2>
-                <form id="login_form" onsubmit="contact(event)">
+                <form id="login_form"  action="{{url_for('login')}}" method='POST'>
                     <div class="form_item">
                         <label for="username" class="form_item_label">Username</label>
                         <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
@@ -71,8 +71,7 @@
               
                     <div class="form_item">
                         <label for="email" class="form_item_label">Email</label>
-                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
-
+                        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                     </div>
                     <div class="form_item">
                         <label for="password" class="form_item_label">Password</label>
@@ -109,17 +108,17 @@
                     </div>
                     <div class="form_item">
                         <label for="email" class="form_item_label">Email</label>
-                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
+                        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
                     </div>
                     <div class="form_item">
                         <label for="password" class="form_item_label">Password</label>
-                        <input class="input" type="password" name="password" required></input>
-
+                        <input type="password" id="password" name="password" minlength="8" required>
+                        
                     </div>
                     <div class="form_item">
                         <label for="PhNumber" class="form_item_label">Phone Number</label>
-                        <input class="input" type="number" name="PhNumber" minlength="10" required></input>
+                        <input class="input" type="Number" name="PhNumber" minlength="10" maxlength='10' required></input>
 
                     </div>
                    
