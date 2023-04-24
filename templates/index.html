@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"/>
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
     <script src="https://kit.fontawesome.com/e61293bf49.js" crossorigin="anonymous"></script>
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
@@ -22,9 +22,9 @@
     <section id="Landing">
         <nav>
             <div class="container">
-            <img class="logo" src="./prologo.png" alt="logo">
+            <img class="logo" src="{{url_for('static',filename='prologo.png')}}" alt="logo">
             <ul class="nav_links">
-                <li><a href="#" class="nav_link">Home</a></li>
+                <li><a href="{{url_for('home')}}" class="nav_link">Home</a></li>
                 <li><a href="#"  class="nav_link">Contact</a></li>
                 <li><button  class="nav_link nav_link-book" onclick="togglelogin()">login</button></li>
                 <li><button  class="nav_link nav_link-book" onclick="togglePopUp()">Sign Up</button></li>
@@ -42,7 +42,7 @@
               
             </div>
             <figure class="bg-wrapper">
-                <img src="./bg1.png" alt="bg">
+                <img src="{{url_for('static',filename='bg1.png')}}" alt="bg">
             </figure>
             </div>
         </header>
@@ -53,7 +53,7 @@
             <div class="login_half login_svg">
                 <h2 class="login_title login_title-svg">Welcome to Connect2Serve</h2>
                 <figure class="login_logo_wrapper">
-                    <img src="undraw_access_account_re_8spm.svg" class="login_logo" alt="">
+                    <img src="{{url_for('static',filename='undraw_access_account_re_8spm.svg')}}" class="login_logo" alt="">
                 </figure>
                 <h3 class="login_description">
                    login to find an event/Oraganize an event.
@@ -62,7 +62,7 @@
             <div class="login_half login_forms">
                 <i class="fas fa-times login_exit click" onclick="togglelogin()"></i>
                 <h2 class="login_title login_title-form">Login</h2>
-                <form id="login_form" onsubmit="contact(event)">
+                <form id="login_form"  action="{{url_for('login')}}" method='POST'>
                     <div class="form_item">
                         <label for="username" class="form_item_label">Username</label>
                         <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
@@ -71,8 +71,7 @@
               
                     <div class="form_item">
                         <label for="email" class="form_item_label">Email</label>
-                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
-
+                        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                     </div>
                     <div class="form_item">
                         <label for="password" class="form_item_label">Password</label>
@@ -92,7 +91,7 @@
             <div class="popup_half popup_svg">
                 <h2 class="popup_title popup_title-svg">Welcome to Connect2Serve</h2>
                 <figure class="popup_logo_wrapper">
-                    <img src="undraw_mobile_encryption_re_yw3o.svg" class="popup_logo" alt="">
+                    <img src="{{url_for('static',filename='undraw_mobile_encryption_re_yw3o.svg')}}" class="popup_logo" alt="">
                 </figure>
                 <h3 class="popup_description">
                     Sign up to find an event/Oraganize an event.
@@ -101,7 +100,7 @@
             <div class="popup_half popup_form">
                 <i class="fas fa-times popup_exit click" onclick="togglePopUp()"></i>
                 <h2 class="popup_title popup_title-form">Sign Up</h2>
-                <form id="SignUP_form" onsubmit="contact(event)">
+                <form id="SignUP_form" action="{{url_for('signup')}}" method='POST'>
                     <div class="form_item">
                         <label for="username" class="form_item_label">Username</label>
                         <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
@@ -109,17 +108,17 @@
                     </div>
                     <div class="form_item">
                         <label for="email" class="form_item_label">Email</label>
-                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
+                        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
                     </div>
                     <div class="form_item">
                         <label for="password" class="form_item_label">Password</label>
-                        <input class="input" type="password" name="password" required></input>
-
+                        <input type="password" id="password" name="password" minlength="8" required>
+                        
                     </div>
                     <div class="form_item">
                         <label for="PhNumber" class="form_item_label">Phone Number</label>
-                        <input class="input" type="number" name="PhNumber" minlength="10" required></input>
+                        <input class="input" type="Number" name="PhNumber" minlength="10" maxlength='10' required></input>
 
                     </div>
                    
@@ -128,7 +127,7 @@
                     
                     <input type="radio" id="volunteer" class="rbtn" name="role" value="volunteer" required>
                     <label for="volunteer">Volunteer</label>
-                    <input type="radio" id="organizer" class="rbtn" name="role" value="organizer">
+                    <input type="radio" id="organizer" class="rbtn" name="role" value="organizer" required>
                     <label for="organizer">Organizer</label>
                 </div>
                     
@@ -191,7 +190,7 @@
                 <ul class="stories_list">
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="volunteer2.jpg" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='volunteer2.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -209,7 +208,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="volunteer1.jpg" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='volunteer1.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -227,7 +226,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="volunterrr.jpg" class="story_img" alt="">
+                            <img src="{{url_for('static',filename='volunterrr.jpg')}}" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -252,7 +251,7 @@
             <div class="row row_column">
                 <a href="#">
                 <figure class="footer_logo">
-                    <img src="prologo.png" alt="" class="footer_logo-img">
+                    <img src="{{url_for('static',filename='prologo.png')}}" alt="" class="footer_logo-img">
                 </figure>
             </a>
             <div class="footer_list">
