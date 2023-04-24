@@ -37,3 +37,14 @@ function togglePopUp(){
     isPopUpOpen=true
       document.body.classList+=" popup--open"
 }
+
+let isLoginOpen=false
+function togglelogin(){
+    
+    if(isLoginOpen){
+        isLoginOpen=false;
+        return document.body.classList.remove("login--open")
+    }
+    isLoginOpen=true
+      document.body.classList+=" login--open"
+}

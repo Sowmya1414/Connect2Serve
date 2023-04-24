@@ -26,15 +26,16 @@
             <ul class="nav_links">
                 <li><a href="#" class="nav_link">Home</a></li>
                 <li><a href="#"  class="nav_link">Contact</a></li>
-                <li><a href="#"  class="nav_link nav_link-book">Login</a></li>
-                <li><button  class="nav_link nav_link-book" onclick="togglePopUp()">Sign Up</button></a></li>
+                <li><button  class="nav_link nav_link-book" onclick="togglelogin()">login</button></li>
+                <li><button  class="nav_link nav_link-book" onclick="togglePopUp()">Sign Up</button></li>
             </ul>
         </div>
         </nav>
         <header>
             <div class="head_container">
                 <div class="head_description">
-                <h1>India's most awarded online library platform</h1>
+                <h1>Be the change you wish to see in the world  
+                </h1>
                 <h2>
                     Find Your Event with <span class="purple"> Connect2Serve</span>
                 </h2>
@@ -45,6 +46,44 @@
             </figure>
             </div>
         </header>
+        <div class="login">
+            <div class="login_half login_svg">
+                <h2 class="login_title login_title-svg">Welcome to Connect2Serve</h2>
+                <figure class="login_logo_wrapper">
+                    <img src="undraw_mobile_encryption_re_yw3o.svg" class="login_logo" alt="">
+                </figure>
+                <h3 class="login_description">
+                   login to find an event/Oraganize an event.
+                </h3>
+            </div>
+            <div class="login_half login_forms">
+                <i class="fas fa-times login_exit click" onclick="togglelogin()"></i>
+                <h2 class="login_title login_title-form">Sign Up</h2>
+                <form id="login_form" onsubmit="contact(event)">
+                    <div class="form_item">
+                        <label for="username" class="form_item_label">Username</label>
+                        <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
+
+                    </div>
+                    <div class="form_item">
+                        <label for="email" class="form_item_label">Email</label>
+                        <input class="input" type="user_email" name="email" placeholder="Enter email address" required></input>
+
+                    </div>
+                    <div class="form_item">
+                        <label for="password" class="form_item_label">Password</label>
+                        <input class="input" type="password" name="password" required></input>
+
+                    </div>
+                 
+              
+               
+                <button id="form_submit" class="form-submit" >Sign Up</button>
+                </form>
+               
+            </div>
+            
+        </div>
         <div class="popup">
             <div class="popup_half popup_svg">
                 <h2 class="popup_title popup_title-svg">Welcome to Connect2Serve</h2>
@@ -78,7 +117,7 @@
                    <div class="rolle">
                     <h4 class="RoleOfPerson">Select your Role</h4>
                     
-                    <input type="radio" id="volunteer" class="rbtn" name="role" value="volunteer">
+                    <input type="radio" id="volunteer" class="rbtn" name="role" value="volunteer" required>
                     <label for="volunteer">Volunteer</label>
                     <input type="radio" id="organizer" class="rbtn" name="role" value="organizer">
                     <label for="organizer">Organizer</label>
@@ -87,7 +126,7 @@
               
                 <div class="Districts">
                     <h4 class="districtName">Select Your district</h4>
-                    <select id="District" name="district">
+                    <select id="District" name="district" required>
                         <option value="">Select a State</option>
                         <option value="Amalapuram">Amalapuram</option>
                         <option value="Anakapalli">Anakapalli</option>
@@ -143,7 +182,25 @@
                 <ul class="stories_list">
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Clean_5822.jpg" class="story_img" alt="">
+                            <img src="volunteer2.jpg" class="story_img" alt="">
+                            <div class="story_wrapper-bg"></div>
+                            <div class="story_description">
+                                <h3 class="story_description_title">
+                                    Beach Cleaning
+                                </h3>
+                                <h4 class="story_description_sub-title">
+                                    descript
+                                </h4>
+                                <p class="story_description_para">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
+                                </p>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="story">
+                        <div class="story_wrapper">
+                            <img src="volunteer1.jpg" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
@@ -161,25 +218,7 @@
                     </li>
                     <li class="story">
                         <div class="story_wrapper">
-                            <img src="Clean_5822.jpg" class="story_img" alt="">
-                            <div class="story_wrapper-bg"></div>
-                            <div class="story_description">
-                                <h3 class="story_description_title">
-                                    story title
-                                </h3>
-                                <h4 class="story_description_sub-title">
-                                    descript
-                                </h4>
-                                <p class="story_description_para">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
-                                </p>
-
-                            </div>
-                        </div>
-                    </li>
-                    <li class="story">
-                        <div class="story_wrapper">
-                            <img src="Clean_5822.jpg" class="story_img" alt="">
+                            <img src="volunterrr.jpg" class="story_img" alt="">
                             <div class="story_wrapper-bg"></div>
                             <div class="story_description">
                                 <h3 class="story_description_title">
