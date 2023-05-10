@@ -100,6 +100,7 @@
             <div class="popup_half popup_form">
                 <i class="fas fa-times popup_exit click" onclick="togglePopUp()"></i>
                 <h2 class="popup_title popup_title-form">Sign Up</h2>
+                
                 <form id="SignUP_form" action="{{url_for('signup')}}" method='POST'>
                     <div class="form_item">
                         <label for="username" class="form_item_label">Username</label>
@@ -117,8 +118,8 @@
                         
                     </div>
                     <div class="form_item">
-                        <label for="PhNumber" class="form_item_label">Phone Number</label>
-                        <input class="input" type="Number" name="PhNumber" minlength="10" maxlength='10' required></input>
+                        <label for="ph_no" class="form_item_label">Phone Number</label>
+                        <input class="input" type="Number" name="ph_no" minlength="10" maxlength='10' required></input>
 
                     </div>
                    
@@ -171,6 +172,7 @@
                 </div>
                 <button id="form_submit" class="form-submit" >Sign Up</button>
                 </form>
+                
                 <div class="popup_overlay popup_overlay-loading">
                     <i class="fas fa-spinner"></i>
                 </div>
