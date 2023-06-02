@@ -1,0 +1,39 @@
+
+
+
+<div class="login">
+    <div class="login_half login_svg">
+        <h2 class="login_title login_title-svg">Welcome to Connect2Serve</h2>
+        <figure class="login_logo_wrapper">
+            <img src="{{url_for('static',filename='images/undraw_access_account_re_8spm.svg')}}" class="login_logo" alt="">
+        </figure>
+        <h3 class="login_description">
+           login to find an event/Oraganize an event.
+        </h3>
+    </div>
+    <div class="login_half login_forms">
+        <i class="fas fa-times login_exit click" onclick="togglelogin()"></i>
+        <h2 class="login_title login_title-form">Login</h2>
+       </br>
+        <form id="login_form"  action="{{url_for('login')}}" method='POST'>
+            <div class="form_item">
+                <label for="username" class="form_item_label">Username</label>
+                <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
+
+            </div>
+      
+            
+            <div class="form_item">
+                <label for="password" class="form_item_label">Password</label>
+                <input class="input" type="password" name="password" required></input>
+
+            </div>
+         
+        </br>
+       
+        <button id="form_submit" class="form-submit" >Login</button>
+        </form>
+       
+    </div>
+    
+</div>
