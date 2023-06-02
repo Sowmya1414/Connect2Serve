@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}"/>
+    <title>Document</title>
+    <script src="{{url_for('static',filename='js/script.js')}}"></script>
+    <script src="https://kit.fontawesome.com/e61293bf49.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("Vf4u076Aejfoy8dnC");
+   })();
+</script>
+   
+</head>
+<body>
+    
+    <section id="Landing">
+        <nav>
+            <div class="container">
+            <img class="logo" src="{{url_for('static',filename='images/prologo.png')}}" alt="logo">
+            
+            <ul class="nav_links">
+                <li><a href="{{url_for('home')}}" class="nav_link">Home</a></li>
+                <li><a href="#"  class="nav_link">Contact</a></li>
+                <li><button  class="nav_link nav_link-book" onclick="togglelogin()">login</button></li>
+                <li><button  class="nav_link nav_link-book" onclick="togglePopUp()">Sign Up</button></li>
+            </ul>
+        </div>
+        </nav>
+        
+        <header>
+            
+            <div class="head_container">
+                <div class="head_description">
+                <h1>Be the change you wish to see in the world  
+                </h1>
+                <h2>
+                    Find Your Event with <span class="purple"> Connect2Serve</span>
+                </h2>
+              
+            </div>
+            <figure class="bg-wrapper">
+                <img src="{{url_for('static',filename='images/bg1.png')}}" alt="bg">
+            </figure>
+            </div>
+        </header>
+        <button class="mail_btn click">
+            <i class="fas fa-envelope"></i>
+        </button>
+
+        {% include 'login.html' %}
+    
+        {% include 'signup.html' %}
+       
+    </section>
+    <section id="stories">
+        <div class="container">
+            <div class="row">
+                <h1 class="section_title">
+                    Recent Successful Events
+                </h1>
+                <ul class="stories_list">
+                    <li class="story">
+                        <div class="story_wrapper">
+                            <img src="{{url_for('static',filename='images/volunteer2.jpg')}}" class="story_img" alt="">
+                            <div class="story_wrapper-bg"></div>
+                            <div class="story_description">
+                                <h3 class="story_description_title">
+                                    Beach Cleaning
+                                </h3>
+                                <h4 class="story_description_sub-title">
+                                    RK Beach Vizag
+                                </h4>
+                                <p class="story_description_para">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
+                                </p>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="story">
+                        <div class="story_wrapper">
+                            <img src="{{url_for('static',filename='images/volunteer1.jpg')}}" class="story_img" alt="">
+                            <div class="story_wrapper-bg"></div>
+                            <div class="story_description">
+                                <h3 class="story_description_title">
+                                    Food service at Orphanage 
+                                </h3>
+                                <h4 class="story_description_sub-title">
+                                    Vizianagaram
+                                </h4>
+                                <p class="story_description_para">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
+                                </p>
+
+                            </div>
+                        </div>
+                    </li>
+                    <li class="story">
+                        <div class="story_wrapper">
+                            <img src="{{url_for('static',filename='images/volunterrr.jpg')}}" class="story_img" alt="">
+                            <div class="story_wrapper-bg"></div>
+                            <div class="story_description">
+                                <h3 class="story_description_title">
+                                    Old Age homes 
+                                </h3>
+                                <h4 class="story_description_sub-title">
+                                    Guntur
+                                </h4>
+                                <p class="story_description_para">
+                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint reprehenderit dicta ipsam, eaque labore vel itaque. Cumque placeat unde eos!
+                                </p>
+
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row row_column">
+                <a href="#">
+                <figure class="footer_logo">
+                    <img src="{{url_for('static',filename='images/prologo.png')}}" alt="" class="footer_logo-img">
+                </figure>
+            </a>
+            <div class="footer_list">
+                <a href="" class="footer_link">Home</a>
+                <a href="" class="footer_link no-cursor">About</a>
+               
+                <a href="" class="footer_link no-cursor">Contact</a>
+            </div>
+            <div class="footer_copyright">
+                Copyright &copy; Connect2Serve
+            </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
