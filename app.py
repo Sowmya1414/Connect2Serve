@@ -12,10 +12,14 @@ app.config['SECRET_KEY']="secret key!!!"
 app.config['SQLALCHEMY_DATABASE_URI']='mysql+mysqlconnector://root:hello@localhost/connect2serve_db_1'
 db=SQLAlchemy(app)
 migrate= Migrate(app,db)
-# flask login
+
+
+
 login_manager= LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
+
 
 class Users(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
@@ -53,6 +57,7 @@ class Events(db.Model):
     event_time = db.Column(db.String(10), nullable=False)
     about_event= db.Column(db.Text)
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -78,7 +83,7 @@ def signup():
 
         else:
             #  flash('There is some error. Try again...')
-            return render_template('home')
+            return render_template('home.html')
             
 
     return render_template('home.html')
@@ -93,22 +98,37 @@ def login():
             if  check_password_hash(user.password_hash,password):
                 login_user(user)
                 # flash('Logged in !')
-                if user.role=='organizer':
-                    return render_template('org_base.html')
-                else:
-                    return render_template('vol_base.html')
+                return render_template('home.html')
+                
             else:
                 # flash('worng password')
                 return redirect(url_for('home'))
         else:
             # flash("user doesn't exist!")
             return redirect(url_for('home'))
+    else:
+        return redirect(url_for('home'))
+
+@app.route('/logout',methods=['GET','POST'])
+@login_required
+def logout():
+    logout_user()
+    flash("you have been logged out")
     return redirect(url_for('home'))
 
 
+@app.route('/dashboard',methods=['GET','POST'])
+@login_required
+def dashboard():
+    return render_template('dashboard.html',)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html") , 404
+
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template("500.html") , 500
 
 if __name__=='__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)

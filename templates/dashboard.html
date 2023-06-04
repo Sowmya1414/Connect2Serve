@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Dashboard </h1>
+</br>
+<div class="card">
+    <div class="card-header">
+        {{current_user.name}}
+    </div>
+    
+    <div class="card-body">
+      <div class="container">
+        <div class='row'>
+          <div class= "col-8">
+            <h5 class="card-title">Welcome ^_^</h5>
+            <p class="card-text">
+              Username : {{current_user.username}} </br>
+              User Id : {{current_user.id}} </br>
+              Email : {{current_user.email }}</br>
+              Date Joined : {{current_user.date_time}} </br>
+              Role : {{current_user.role }}</br>
+              Contact no : {{ current_user.ph_no }}</br>
+              </br>
+              <a href="#" class="btn btn-dark ">Edit</a>
+              <a href="{{url_for('logout')}}" class="btn btn-dark ">Logout</a>
+              <a href="#" class="btn btn-danger ">Delete</a>
+              <br/>
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</br>
+
+{% endblock %}
