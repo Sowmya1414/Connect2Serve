@@ -1,62 +1,171 @@
-{% extends 'base.html'%}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event Registration Form</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
 
-{% block content %}
+    h1 {
+      color: #333;
+      text-align: center;
+    }
 
-<form id="SignUP_form" action="{{url_for('update',id=current_user.id)}}" method='POST'>
-    
-    </br></br></br>
-    username : {{current_user.username }}</br>
-    email : {{current_user.email }}</br>
-    id : {{current_user.id}}<br/>
-    <div class="form_item">
-        <label for="date" class="form_item_label">Event Date</label>
-        <input type="" id="password" name="password" minlength="8" value='{{current_user.password}}' required>
-        
-    </div>
-    <div class="form_item">
-        <label for="ph_no" class="form_item_label">Phone Number</label>
-        <input class="input" type="Number" name="ph_no" minlength="10" maxlength='10' value='{{current_user.ph_no}}' required></input>
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-    </div>
-    
- <div class="Districts">
-    <h4 class="districtName">Select Your district</h4>
-    <select id="District" name="district" required>
-        <option value="{{current_user.district}}">{{current_user.district}}</option>
-        <option value="Amalapuram">Amalapuram</option>
-        <option value="Anakapalli">Anakapalli</option>
-        <option value="Ananthapuram">Ananthapuram</option>
-        <option value="Bapatla">Bapatla</option>
-        <option value="Bhimavaram">Bhimavaram</option>
-        <option value="Chittoor">Chittoor</option>
-        <option value="Eluru">Eluru</option>
-        
-        <option value="Guntur">Guntur</option>
-        <option value="Kakinada">Kakinada</option>
-        <option value="Kurnool">Kurnool</option>
-       
-        <option value="Kadapa">Kadapa</option>
-        <option value="Machilipatnam">Machilipatnam</option>
-        <option value="Nandyala">Nandyala</option>
-        <option value="Narasaraopeta">Narasaraopeta</option>
-        <option value="Nellore">Nellore</option>
-        <option value="Ongole">Ongole</option>
-        <option value="Parvathipuram">Parvathipuram</option>
-        <option value="Paderu">Paderu</option>
-        <option value="Puttaparthi">Puttaparthi</option>
-        <option value="Rayachoti">Rayachoti</option>
-        
-        <option value="Rajahmahendravaram">Rajahmahendravaram</option>
-        <option value="Srikakulam">Srikakulam</option>
-        <option value="Tirupati">Tirupati</option>
-        <option value="Visakhapatnam">Visakhapatnam</option>
-        <option value="Vizianagaram">Vizianagaram</option>
-        <option value="Vijayawada">Vijayawada</option>
-       
-      </select>
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="time"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 0 auto; /* Center align horizontally */
+      display: block; /* Make the button a block element */
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error {
+      color: #f44336;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Event Registration Form</h1>
+
+  <div class="form-container">
+    <form onsubmit="return validateForm()">
+   
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" required>
+
+      <label for="location">Location (URL):</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="contact">Contact Number:</label>
+      <input type="tel" id="contact" name="contact" required>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
       
-    </div>
-  <button id="form_submit" class="form-submit" >Update</button>
-</form>
+      var dateInput = document.getElementById('date');
+      var timeInput = document.getElementById('time');
+      var locationInput = document.getElementById('location');
+      var addressInput = document.getElementById('address');
+      var contactInput = document.getElementById('contact');
 
-{% endblock %}
+      var isValid = true;
+
+      // Validate name (only letters and spaces)
+      var nameRegex = /^[A-Za-z\s]+$/;
+      if (!nameRegex.test(nameInput.value)) {
+        nameInput.classList.add('error');
+        isValid = false;
+      } else {
+        nameInput.classList.remove('error');
+      }
+
+      // Validate email
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value)) {
+        emailInput.classList.add('error');
+        isValid = false;
+      } else {
+        emailInput.classList.remove('error');
+      }
+
+      // Validate date (must be in the future)
+      var currentDate = new Date().toISOString().split('T')[0];
+      if (dateInput.value < currentDate) {
+        dateInput.classList.add('error');
+        isValid = false;
+      } else {
+        dateInput.classList.remove('error');
+      }
+
+      // Validate time (24-hour format)
+      var timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+      if (!timeRegex.test(timeInput.value)) {
+        timeInput.classList.add('error');
+        isValid = false;
+      } else {
+        timeInput.classList.remove('error');
+      }
+
+      // Validate location (must be a valid URL)
+      var locationRegex = /^(http[s]?|ftp):\/\/\S+/;
+      if (!locationRegex.test(locationInput.value)) {
+        locationInput.classList.add('error');
+        isValid = false;
+      } else {
+        locationInput.classList.remove('error');
+      }
+
+      // Validate address (at least one character)
+      var addressRegex = /^.+$/;
+      if (!addressRegex.test(addressInput.value)) {
+        addressInput.classList.add('error');
+        isValid = false;
+      } else {
+        addressInput.classList.remove('error');
+      }
+
+      // Validate contact number (10 digits mobile number)
+      var contactRegex = /^\d{10}$/;
+      if (!contactRegex.test(contactInput.value)) {
+        contactInput.classList.add('error');
+        isValid = false;
+      } else {
+        contactInput.classList.remove('error');
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+</html>
