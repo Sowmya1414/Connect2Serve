@@ -19,13 +19,17 @@ login_manager= LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+@login_manager.user_loader
+def load_user(user_id):
+    return Users.query.get(int(user_id))
 
 
 class Users(db.Model,UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), nullable=False)
+    name= db.Column(db.String(100), nullable=False)
+    username = db.Column(db.String(100), nullable=False,unique=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    password_hash = db.Column(db.String(100), nullable=False)
+    password_hash = db.Column(db.String(10000), nullable=False)
     role = db.Column(db.String(100), nullable=False)
     district = db.Column(db.String(100), nullable=False)
     ph_no = db.Column(db.String(20), nullable=False)
@@ -43,9 +47,6 @@ class Users(db.Model,UserMixin):
     def verify_password(self,password):
         return check_password_hash(self.password_hash , password)
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Users.query.get(int(user_id))
 
 class Events(db.Model):
     event_id = db.Column(db.Integer, primary_key=True)
@@ -55,7 +56,7 @@ class Events(db.Model):
     event_url = db.Column(db.String(300), nullable=False)
     event_date = db.Column(db.String(10), nullable=False)
     event_time = db.Column(db.String(10), nullable=False)
-    about_event= db.Column(db.Text)
+    about_event= db.Column(db.Text(1000),nullable=False)
 
 
 @app.route('/')
@@ -97,7 +98,6 @@ def login():
         if user :
             if  check_password_hash(user.password_hash,password):
                 login_user(user)
-                # flash('Logged in !')
                 return render_template('home.html')
                 
             else:
@@ -122,6 +122,46 @@ def logout():
 def dashboard():
     return render_template('dashboard.html',)
 
+@app.route('/delete/<int:id>',methods=['POST','GET'])
+@login_required
+def delete(id):
+    if id==current_user.id:    
+        delete=Users.query.get_or_404(id)
+        try:
+            db.session.delete(delete)
+            db.session.commit()
+            logout_user()
+            return render_template('home.html')
+        except:
+            return redirect(url_for('dashboard'))
+    return render_template('dashboard.html')
+
+
+@app.route('/update/<int:id>',methods=['GET','POST'])
+@login_required
+def update(id):
+    name_update=Users.query.get_or_404(id)
+    if request.method=="POST":
+
+        name_update.password=request.form.get('password')
+        name_update.ph_no=request.form.get('ph_no')
+        name_update.district=request.form.get('district')
+
+        try:
+            db.session.commit()
+            return redirect(url_for('dashboard')) 
+        except:
+            return render_template('update.html',id=id)
+    return render_template('update.html',id=id)
+
+@app.route('/events',methods=['POST','GET'])
+def events_page():
+    events_=Events.query.order_by(Events.event_date)
+    return render_template('events.html',events=events_)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html") , 404
