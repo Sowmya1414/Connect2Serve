@@ -1,0 +1,62 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<form id="SignUP_form" action="{{url_for('update',id=current_user.id)}}" method='POST'>
+    
+    </br></br></br>
+    username : {{current_user.username }}</br>
+    email : {{current_user.email }}</br>
+    id : {{current_user.id}}<br/>
+    <div class="form_item">
+        <label for="date" class="form_item_label">Event Date</label>
+        <input type="" id="password" name="password" minlength="8" value='{{current_user.password}}' required>
+        
+    </div>
+    <div class="form_item">
+        <label for="ph_no" class="form_item_label">Phone Number</label>
+        <input class="input" type="Number" name="ph_no" minlength="10" maxlength='10' value='{{current_user.ph_no}}' required></input>
+
+    </div>
+    
+ <div class="Districts">
+    <h4 class="districtName">Select Your district</h4>
+    <select id="District" name="district" required>
+        <option value="{{current_user.district}}">{{current_user.district}}</option>
+        <option value="Amalapuram">Amalapuram</option>
+        <option value="Anakapalli">Anakapalli</option>
+        <option value="Ananthapuram">Ananthapuram</option>
+        <option value="Bapatla">Bapatla</option>
+        <option value="Bhimavaram">Bhimavaram</option>
+        <option value="Chittoor">Chittoor</option>
+        <option value="Eluru">Eluru</option>
+        
+        <option value="Guntur">Guntur</option>
+        <option value="Kakinada">Kakinada</option>
+        <option value="Kurnool">Kurnool</option>
+       
+        <option value="Kadapa">Kadapa</option>
+        <option value="Machilipatnam">Machilipatnam</option>
+        <option value="Nandyala">Nandyala</option>
+        <option value="Narasaraopeta">Narasaraopeta</option>
+        <option value="Nellore">Nellore</option>
+        <option value="Ongole">Ongole</option>
+        <option value="Parvathipuram">Parvathipuram</option>
+        <option value="Paderu">Paderu</option>
+        <option value="Puttaparthi">Puttaparthi</option>
+        <option value="Rayachoti">Rayachoti</option>
+        
+        <option value="Rajahmahendravaram">Rajahmahendravaram</option>
+        <option value="Srikakulam">Srikakulam</option>
+        <option value="Tirupati">Tirupati</option>
+        <option value="Visakhapatnam">Visakhapatnam</option>
+        <option value="Vizianagaram">Vizianagaram</option>
+        <option value="Vijayawada">Vijayawada</option>
+       
+      </select>
+      
+    </div>
+  <button id="form_submit" class="form-submit" >Update</button>
+</form>
+
+{% endblock %}

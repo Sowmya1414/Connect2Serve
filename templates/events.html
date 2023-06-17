@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for event in events %}
+  
+  Date : {{event.event_date}}</br>
+  Time : {{event.event_time}}</br>
+  Venue : {{event.event_address}}</br>
+  <br/><br/><br/>
+  
+{% endfor %}
+
+{% endblock %}
