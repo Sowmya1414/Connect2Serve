@@ -50,8 +50,6 @@
       border-radius: 4px;
       cursor: pointer;
       font-size: 14px;
-      margin: 0 auto; /* Center align horizontally */
-      display: block; /* Make the button a block element */
     }
 
     input[type="submit"]:hover {
@@ -62,6 +60,15 @@
       color: #f44336;
       font-size: 12px;
     }
+    select{
+        width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
@@ -69,7 +76,7 @@
 
   <div class="form-container">
     <form onsubmit="return validateForm()">
-   
+     
 
       <label for="date">Date:</label>
       <input type="date" id="date" name="date" required>
@@ -79,6 +86,44 @@
 
       <label for="location">Location (URL):</label>
       <input type="text" id="location" name="location" required>
+      <label for="location">District:</label>
+      <div class="Districts">
+      
+        <select id="District" name="district" required>
+            <option value="{{current_user.district}}">{{current_user.district}}</option>
+            <option value="Amalapuram">Amalapuram</option>
+            <option value="Anakapalli">Anakapalli</option>
+            <option value="Ananthapuram">Ananthapuram</option>
+            <option value="Bapatla">Bapatla</option>
+            <option value="Bhimavaram">Bhimavaram</option>
+            <option value="Chittoor">Chittoor</option>
+            <option value="Eluru">Eluru</option>
+            
+            <option value="Guntur">Guntur</option>
+            <option value="Kakinada">Kakinada</option>
+            <option value="Kurnool">Kurnool</option>
+           
+            <option value="Kadapa">Kadapa</option>
+            <option value="Machilipatnam">Machilipatnam</option>
+            <option value="Nandyala">Nandyala</option>
+            <option value="Narasaraopeta">Narasaraopeta</option>
+            <option value="Nellore">Nellore</option>
+            <option value="Ongole">Ongole</option>
+            <option value="Parvathipuram">Parvathipuram</option>
+            <option value="Paderu">Paderu</option>
+            <option value="Puttaparthi">Puttaparthi</option>
+            <option value="Rayachoti">Rayachoti</option>
+            
+            <option value="Rajahmahendravaram">Rajahmahendravaram</option>
+            <option value="Srikakulam">Srikakulam</option>
+            <option value="Tirupati">Tirupati</option>
+            <option value="Visakhapatnam">Visakhapatnam</option>
+            <option value="Vizianagaram">Vizianagaram</option>
+            <option value="Vijayawada">Vijayawada</option>
+           
+          </select>
+          
+        </div>
 
       <label for="address">Address:</label>
       <input type="text" id="address" name="address" required>
@@ -92,7 +137,7 @@
 
   <script>
     function validateForm() {
-      
+     
       var dateInput = document.getElementById('date');
       var timeInput = document.getElementById('time');
       var locationInput = document.getElementById('location');
