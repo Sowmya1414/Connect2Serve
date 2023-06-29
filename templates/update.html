@@ -1,62 +1,151 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 
 {% block content %}
+</br></br></br>
 
-<form id="SignUP_form" action="{{url_for('update',id=current_user.id)}}" method='POST'>
-    
-    </br></br></br>
-    username : {{current_user.username }}</br>
-    email : {{current_user.email }}</br>
-    role : {{current_user.role}}<br/>
-    <div class="form_item">
-        <label for="password" class="form_item_label">Password</label>
-        <input type="password" id="password" name="password" minlength="8" value='{{current_user.password}}' required>
-        
-    </div>
-    <div class="form_item">
-        <label for="ph_no" class="form_item_label">Phone Number</label>
-        <input class="input" type="Number" name="ph_no" minlength="10" maxlength='10' value='{{current_user.ph_no}}' required></input>
+<style>
+  .contain {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
 
-    </div>
-    
- <div class="Districts">
-    <h4 class="districtName">Select Your district</h4>
-    <select id="District" name="district" required>
-        <option value="{{current_user.district}}">{{current_user.district}}</option>
-        <option value="Amalapuram">Amalapuram</option>
-        <option value="Anakapalli">Anakapalli</option>
-        <option value="Ananthapuram">Ananthapuram</option>
-        <option value="Bapatla">Bapatla</option>
-        <option value="Bhimavaram">Bhimavaram</option>
-        <option value="Chittoor">Chittoor</option>
-        <option value="Eluru">Eluru</option>
+.form_title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form_item {
+    margin-bottom: 20px;
+}
+
+.form_item_label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.Districts {
+    margin-bottom: 20px;
+}
+
+.districtName {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#form_submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#form_submit:hover {
+    background-color: #555;
+}
+
+.note {
+  margin-top: 20px;
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+}
+
+</style>
+<div class="contain">
+    <form id="SignUP_form" action="{{ url_for('update', id=current_user.id) }}" method="POST">
         
-        <option value="Guntur">Guntur</option>
-        <option value="Kakinada">Kakinada</option>
-        <option value="Kurnool">Kurnool</option>
-       
-        <option value="Kadapa">Kadapa</option>
-        <option value="Machilipatnam">Machilipatnam</option>
-        <option value="Nandyala">Nandyala</option>
-        <option value="Narasaraopeta">Narasaraopeta</option>
-        <option value="Nellore">Nellore</option>
-        <option value="Ongole">Ongole</option>
-        <option value="Parvathipuram">Parvathipuram</option>
-        <option value="Paderu">Paderu</option>
-        <option value="Puttaparthi">Puttaparthi</option>
-        <option value="Rayachoti">Rayachoti</option>
+        <h1 class="form_title">Update Profile</h1>
+        <br/>
         
-        <option value="Rajahmahendravaram">Rajahmahendravaram</option>
-        <option value="Srikakulam">Srikakulam</option>
-        <option value="Tirupati">Tirupati</option>
-        <option value="Visakhapatnam">Visakhapatnam</option>
-        <option value="Vizianagaram">Vizianagaram</option>
-        <option value="Vijayawada">Vijayawada</option>
-       
-      </select>
-      
-    </div>
-  <button id="form_submit" class="form-submit" >Update</button>
-</form>
+        <div class="form_item">
+            <label for="username" class="form_item_label">Username</label>
+            <input type="text" id="username" name="username" value="{{ current_user.username }}" readonly>
+        </div>
+        
+        <div class="form_item">
+            <label for="email" class="form_item_label">Email</label>
+            <input type="email" id="email" name="email" value="{{ current_user.email }}" readonly>
+        </div>
+        
+        <div class="form_item">
+            <label for="role" class="form_item_label">Role</label>
+            <input type="text" id="role" name="role" value="{{ current_user.role }}" readonly>
+        </div>
+        
+        <div class="form_item">
+            <label for="password" class="form_item_label">Password</label>
+            <input type="password" id="password" name="password" minlength="8" value="{{ current_user.password }}" required>
+        </div>
+        
+        <div class="form_item">
+            <label for="ph_no" class="form_item_label">Phone Number</label>
+            <input class="input" type="number" id="ph_no" name="ph_no" minlength="10" maxlength="10" value="{{ current_user.ph_no }}" required>
+        </div>
+        
+        <div class="Districts">
+            <h4 class="districtName">Select Your District</h4>
+            <select id="District" name="district" required>
+                <option value="{{ current_user.district }}">{{ current_user.district }}</option>
+                <option value="Amalapuram">Amalapuram</option>
+                <option value="Anakapalli">Anakapalli</option>
+                <option value="Ananthapuram">Ananthapuram</option>
+                <option value="Bapatla">Bapatla</option>
+                <option value="Bhimavaram">Bhimavaram</option>
+                <option value="Chittoor">Chittoor</option>
+                <option value="Eluru">Eluru</option>
+                
+                <option value="Guntur">Guntur</option>
+                <option value="Kakinada">Kakinada</option>
+                <option value="Kurnool">Kurnool</option>
+               
+                <option value="Kadapa">Kadapa</option>
+                <option value="Machilipatnam">Machilipatnam</option>
+                <option value="Nandyala">Nandyala</option>
+                <option value="Narasaraopeta">Narasaraopeta</option>
+                <option value="Nellore">Nellore</option>
+                <option value="Ongole">Ongole</option>
+                <option value="Parvathipuram">Parvathipuram</option>
+                <option value="Paderu">Paderu</option>
+                <option value="Puttaparthi">Puttaparthi</option>
+                <option value="Rayachoti">Rayachoti</option>
+                
+                <option value="Rajahmahendravaram">Rajahmahendravaram</option>
+                <option value="Srikakulam">Srikakulam</option>
+                <option value="Tirupati">Tirupati</option>
+                <option value="Visakhapatnam">Visakhapatnam</option>
+                <option value="Vizianagaram">Vizianagaram</option>
+                <option value="Vijayawada">Vijayawada</option>
+            </select>
+        </div>
+        
+        <button id="form_submit" class="form-submit">Update</button>
+    </form>
+</div>
+<div class="note">
+  <p>Note: If you want update your email,please contact the admin.</p>
+</div>
+</br></br></br>
 
 {% endblock %}

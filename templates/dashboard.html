@@ -2,38 +2,81 @@
 
 {% block content %}
 
-<h1> Dashboard </h1>
-</br>
-<div class="card">
-    <div class="card-header">
-        {{current_user.name}}
-    </div>
-    
-    <div class="card-body">
-      <div class="container">
-        <div class='row'>
-          <div class= "col-8">
-            <h5 class="card-title">Welcome ^_^</h5>
-            <p class="card-text">
-              Username : {{current_user.username}} </br>
-              User Id : {{current_user.id}} </br>
-              Email : {{current_user.email }}</br>
-              Date Joined : {{current_user.date_time}} </br>
-              Role : {{current_user.role }}</br>
-              Contact no : {{ current_user.ph_no }}</br>
-              </br>
-              <a href="{{url_for('update',id=current_user.id)}}" class="btn btn-dark ">Edit</a>
-              <a href="{{url_for('logout')}}" class="btn btn-dark ">Logout</a>
-              <a href="{{url_for('delete',id=current_user.id)}}" class="btn btn-danger ">Delete</a>
-              <br/>
-            </p>
-          </div>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</br>
+<head>
+    <title>Dashboard</title>
+    <style>
+        .dashboard-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-info {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-label {
+            font-weight: bold;
+        }
+        
+        .dashboard-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-actions a {
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .btn.btn-dark {
+            background-color: #555;
+        }
+        
+        .btn.btn-danger {
+            background-color: #f44336;
+        }
+        
+    </style>
+</head>
 
+<body>
+    <br/><br/>
+    <h1><i>Dashboard</i></h1>
+    <br/><br/>
+    <div class="dashboard-container">
+        <div class="dashboard-info">
+            <p><span class="dashboard-label">Name:</span> {{ current_user.name }}</p>
+            <p><span class="dashboard-label">Username:</span> {{ current_user.username }}</p>
+            <p><span class="dashboard-label">User Id:</span> {{ current_user.id }}</p>
+            <p><span class="dashboard-label">Email:</span> {{ current_user.email }}</p>
+            <p><span class="dashboard-label">Date Joined:</span> {{ current_user.date_time }}</p>
+            <p><span class="dashboard-label">Role:</span> {{ current_user.role }}</p>
+            <p><span class="dashboard-label">Contact no:</span> {{ current_user.ph_no }}</p>
+        </div>
+        <div class="dashboard-actions">
+            <a href="{{ url_for('update', id=current_user.id) }}" class="btn btn-dark">Edit</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-dark">Logout</a>
+            <a href="{{ url_for('delete', id=current_user.id) }}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</body>
+<br/><br/><br/><br/>
 {% endblock %}

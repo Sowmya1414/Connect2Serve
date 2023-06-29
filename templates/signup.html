@@ -13,11 +13,17 @@
         <h2 class="popup_title popup_title-form">Sign Up</h2>
         
         <form id="SignUP_form" action="{{url_for('signup')}}" method='POST'>
+
+            <div class="form_item">
+                <label for="name" class="form_item_label">Name</label>
+                <input class="input" type="text" name="name" placeholder="Enter your name" required></input>
+            </div>
+
             <div class="form_item">
                 <label for="username" class="form_item_label">Username</label>
-                <input class="input" type="text" name="user_name" placeholder="Enter your name" required></input>
-
+                <input class="input" type="text" name="user_name" placeholder="Enter your username" required></input>
             </div>
+
             <div class="form_item">
                 <label for="email" class="form_item_label">Email</label>
                 <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
@@ -26,8 +32,13 @@
             <div class="form_item">
                 <label for="password" class="form_item_label">Password</label>
                 <input type="password" id="password" name="password" minlength="8" required>
-                
             </div>
+
+            <div class="form_item">
+                <label for="con_password" class="form_item_label">Confirm Password</label>
+                <input type="password" id="con_password" name="con_password" minlength="8" required>    
+            </div>
+
             <div class="form_item">
                 <label for="ph_no" class="form_item_label">Phone Number</label>
                 <input class="input" type="Number" name="ph_no" minlength="10" maxlength='10' required></input>

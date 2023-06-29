@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <title>Edit Event Details</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: #f44336;
+            font-size: 12px;
+        }
+
+        .note {
+          margin-top: 20px;
+          color: #999;
+          font-size: 12px;
+          text-align: center;
+        }
+
+        .warning {
+            margin-top: 20px;
+            color: #f44336;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <br/></br>
+    <h1><i>Edit Event Details</i></h1>
+    <br/></br>
+    <div class="form-container">
+        <form method="POST" action="{{url_for('edit_event',id=edit.event_id)}}" >
+
+            <label for="title">Title:</label>
+            <input type="title" id="title" name="title" value='{{edit.event_title}}' required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value='{{edit.event_date}}' required>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" value='{{edit.event_time}}' required>
+
+            <label for="location">Location (URL):</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="district">District:</label>
+            <select id="district" name="district" required>
+              <option value='{{edit.event_district}}'>{{edit.event_district}}</option>
+              <option value="Amalapuram">Amalapuram</option>
+              <option value="Anakapalli">Anakapalli</option>
+              <option value="Ananthapuram">Ananthapuram</option>
+              <option value="Bapatla">Bapatla</option>
+              <option value="Bhimavaram">Bhimavaram</option>
+              <option value="Chittoor">Chittoor</option>
+              <option value="Eluru">Eluru</option>
+              
+              <option value="Guntur">Guntur</option>
+              <option value="Kakinada">Kakinada</option>
+              <option value="Kurnool">Kurnool</option>
+            
+              <option value="Kadapa">Kadapa</option>
+              <option value="Machilipatnam">Machilipatnam</option>
+              <option value="Nandyala">Nandyala</option>
+              <option value="Narasaraopeta">Narasaraopeta</option>
+              <option value="Nellore">Nellore</option>
+              <option value="Ongole">Ongole</option>
+              <option value="Parvathipuram">Parvathipuram</option>
+              <option value="Paderu">Paderu</option>
+              <option value="Puttaparthi">Puttaparthi</option>
+              <option value="Rayachoti">Rayachoti</option>
+              
+              <option value="Rajahmahendravaram">Rajahmahendravaram</option>
+              <option value="Srikakulam">Srikakulam</option>
+              <option value="Tirupati">Tirupati</option>
+              <option value="Visakhapatnam">Visakhapatnam</option>
+              <option value="Vizianagaram">Vizianagaram</option>
+              <option value="Vijayawada">Vijayawada</option>
+            
+            </select>
+
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value='{{edit.event_address}}' required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="contact" value='{{edit.contact_number}}' required>
+
+            <label for="about">About Event:</label>
+            <textarea id="about" name="about" value='{{edit.about_event}}' required></textarea>
+
+            <input type="submit" name="submit" value="Submit">
+
+        </form>
+    </div>
+    <br/></br>
+    <div class="note">
+      <p>Note: If you want to delete an event, please do so at least two days before the event date.</p>
+    </div>
+
+    <div class="warning">
+      <p>Warning: Creating fake events or providing false information may result in legal consequences.</p>
+    </div>
+    
+    <script>
+        function validateForm() {
+            var dateInput = document.getElementById('date');
+            var timeInput = document.getElementById('time');
+            var locationInput = document.getElementById('location');
+            var addressInput = document.getElementById('address');
+            var contactInput = document.getElementById('contact');
+            var aboutInput = document.getElementById('about');
+
+            var isValid = true;
+
+            // Validate date (must be in the future)
+            var currentDate = new Date().toISOString().split('T')[0];
+            if (dateInput.value < currentDate) {
+                dateInput.classList.add('error');
+                isValid = false;
+            } else {
+                dateInput.classList.remove('error');
+            }
+
+            // Validate time (24-hour format)
+            var timeRegex = /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/;
+            if (!timeRegex.test(timeInput.value)) {
+                timeInput.classList.add('error');
+                isValid = false;
+            } else {
+                timeInput.classList.remove('error');
+            }
+
+            // Validate location (must be a valid URL)
+            var locationRegex = /^(http[s]?|ftp):\/\/\S+/;
+            if (!locationRegex.test(locationInput.value)) {
+                locationInput.classList.add('error');
+                isValid = false;
+            } else {
+                locationInput.classList.remove('error');
+            }
+
+            // Validate address (at least one character)
+            var addressRegex = /^.+$/;
+            if (!addressRegex.test(addressInput.value)) {
+                addressInput.classList.add('error');
+                isValid = false;
+            } else {
+                addressInput.classList.remove('error');
+            }
+
+            // Validate contact number (10 digits mobile number)
+            var contactRegex = /^\d{10}$/;
+            if (!contactRegex.test(contactInput.value)) {
+                contactInput.classList.add('error');
+                isValid = false;
+            } else {
+                contactInput.classList.remove('error');
+            }
+
+            // Validate about event (at least one character)
+            if (!aboutInput.value.trim()) {
+                aboutInput.classList.add('error');
+                isValid = false;
+            } else {
+                aboutInput.classList.remove('error');
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+</br></br></br>
+{% endblock %}

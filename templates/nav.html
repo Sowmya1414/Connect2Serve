@@ -7,20 +7,27 @@
     <ul class="nav_links">
       <li><a href="{{url_for('home')}}" class="nav_link">Home</a></li>
       <li><a href="{{url_for('dashboard')}}"  class="nav_link">Dashboard</a></li>
-      {% if current_user.role=='organizer' %}
-        <li><a href="#"  class="nav_link">Add Event</a></li>
-        <li><a href="#"  class="nav_link">Your Events</a></li>
+
+      {% if current_user.id == 16%}
+      <li><a href="{{url_for('user_list')}}" class="nav_link">User List</a></li>
+      <li><a href="{{url_for('events_page')}}"  class="nav_link">Events List</a></li>
+
       {% else %}
-        <li><a href="#"  class="nav_link">Nearby Events</a></li>
+      {% if current_user.role=='organizer' %}
+        <li><a href="{{url_for('add_event')}}"  class="nav_link">Add Event</a></li>
+        <li><a href="{{url_for('your_event',id=current_user.id)}}"  class="nav_link">Your Events</a></li>
       {% endif %}
+      <li><a href="{{url_for('nearby_event')}}"  class="nav_link">Nearby Events</a></li>
       <li><a href="{{url_for('events_page')}}"  class="nav_link">Events</a></li>
+      
+      
+      {% endif %}
       <li>
         <form action="{{url_for('logout')}}">
           <button  class="nav_link nav_link-book" >Logout</button>
         </form>
       </li>
     </ul>
-
     {% else %}
 
     <ul class="nav_links">

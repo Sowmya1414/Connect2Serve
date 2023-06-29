@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <title>Dashboard</title>
+    <style>
+        .dashboard-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-info {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-label {
+            font-weight: bold;
+        }
+        
+        .dashboard-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-actions a {
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .btn.btn-dark {
+            background-color: #555;
+        }
+        
+        .btn.btn-danger {
+            background-color: #f44336;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <br/><br/>
+    <h1><i>User List</i></h1>
+    <br/><br/>
+    {% for user in user_%}
+    <div class="dashboard-container">
+        <div class="dashboard-info">
+            <p><span class="dashboard-label">Name:</span> {{ user.name }}</p>
+            <p><span class="dashboard-label">Username:</span> {{ user.username }}</p>
+            <p><span class="dashboard-label">User Id:</span> {{ user.id }}</p>
+            <p><span class="dashboard-label">Email:</span> {{ user.email }}</p>
+            <p><span class="dashboard-label">Date Joined:</span> {{ user.date_time }}</p>
+            <p><span class="dashboard-label">Role:</span> {{ user.role }}</p>
+            <p><span class="dashboard-label">Contact no:</span> {{ user.ph_no }}</p>
+        </div>
+        <div class="dashboard-actions">
+            <a href="{{ url_for('update', id=user.id) }}" class="btn btn-dark">Edit</a>
+            {% if user.role=='organizer'%}
+            <a href="{{ url_for('your_event',id=user.id)}}" class="btn btn-dark">There Events</a>
+            {% endif %}
+            <a href="{{ url_for('delete', id=user.id) }}" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    <br/><br/>
+    {% endfor %}
+</body>
+<br/><br/><br/><br/>
+{% endblock %}

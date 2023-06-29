@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<head>
+    <title>Dashboard</title>
+    <style>
+        .dashboard-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-info {
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-label {
+            font-weight: bold;
+        }
+        
+        .dashboard-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .dashboard-actions a {
+            margin-right: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .btn.btn-dark {
+            background-color: #555;
+        }
+        
+        .btn.btn-danger {
+            background-color: #f44336;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <br/><br/>
+    <h1><i>{{event.event_title}}</i></h1>
+    <br/><br/>
+    
+    
+    <div class="dashboard-container">
+        <div class="dashboard-info">
+            <p><span class="dashboard-label">Name of the organiser :</span> {{ event.user.name }}</p>
+            <p><span class="dashboard-label">Event Date :</span> {{ event.event_date }}</p>
+            <p><span class="dashboard-label">Event Time:</span> {{ event.event_time }}</p>
+            <p><span class="dashboard-label">Event District :</span> {{ event.event_district }}</p>
+            <p><span class="dashboard-label">Event Address :</span> {{ event.event_address }}</p>
+            <p><span class="dashboard-label">Event Location(ULR) :</span> {{ event.location }}</p>
+            <p><span class="dashboard-label">Contact Number :</span> {{ event.contact_number }}</p>
+            <p><span class="dashboard-label">About Event :</span> {{ event.about_event }}</p>
+        </div>
+        <div class="dashboard-actions">
+            {% if event.user.id==current_user.id or current_user.id==16 %}
+            <a href="{{ url_for('edit_event', id=event.event_id) }}" class="btn btn-dark">Edit</a>
+            <a href="{{ url_for('delete_event', id=event.event_id) }}" class="btn btn-dark">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+    <br/><br/>
+
+    
+
+</body>
+<br/><br/><br/><br/>
+{% endblock %}
+
