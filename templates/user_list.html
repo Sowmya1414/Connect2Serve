@@ -59,8 +59,9 @@
 
 <body>
     <br/><br/>
-    <h1><i>User List</i></h1>
+    <h1 style="color:#555"><i>User List</i></h1>
     <br/><br/>
+    {% if user_ %}
     {% for user in user_%}
     <div class="dashboard-container">
         <div class="dashboard-info">
@@ -75,13 +76,19 @@
         <div class="dashboard-actions">
             <a href="{{ url_for('update', id=user.id) }}" class="btn btn-dark">Edit</a>
             {% if user.role=='organizer'%}
-            <a href="{{ url_for('your_event',id=user.id)}}" class="btn btn-dark">There Events</a>
+            <a href="{{ url_for('your_event',id=user.id)}}" class="btn btn-dark">Their Events</a>
             {% endif %}
             <a href="{{ url_for('delete', id=user.id) }}" class="btn btn-danger">Delete</a>
         </div>
     </div>
     <br/><br/>
     {% endfor %}
+    {% else %}
+    <div class="empty">
+        <img class="Empty" src="{{url_for('static',filename='images/noevent.gif')}}" >
+        <h3> Oops! currently no users :<span>&#40;</span></h3>
+    </div>
+    {% endif %}
 </body>
 <br/><br/><br/><br/>
 {% endblock %}

@@ -59,11 +59,14 @@
 
 <body>
     <br/><br/>
-    <h1><i>Your Events</i></h1>
+    <h1><i></i></h1>
     <br/><br/>
+    <h1 style="color:#555"><i>Near By Events</i></h1>
+    {% set execute=false%}
     {% for event in events %}
 
     {% if event.event_district==current_user.district%}
+    {% set execute=true %}
     <div class="dashboard-container">
         <div class="dashboard-info">
             <p><span class="dashboard-label">Title :</span> {{ event.event_title }}</p>
@@ -77,9 +80,13 @@
     </div>
     <br/><br/>
     {% endif %}
-
     {% endfor %}
-
+     {% if not execute %}
+     <div class="empty">
+        <img class="Empty" src="{{url_for('static',filename='images/noevent.gif')}}" >
+        <h3> Oops! currently no events in your district :<span>&#40;</span></h3>
+    </div>
+    {% endif %}
 </body>
 <br/><br/><br/><br/>
 {% endblock %}

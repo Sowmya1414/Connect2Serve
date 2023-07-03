@@ -6,7 +6,7 @@
             
     <div class="head_container">
         <div class="head_description">
-        <h1>Be the change you wish to see in the world  
+        <h1 class="purple">Be the change you wish to see in the world  
         </h1>
         <h2>
             Find Your Event with <span class="purple"> Connect2Serve</span>
@@ -18,10 +18,11 @@
     </figure>
     </div>
 </header>
-<button class="mail_btn click">
+<form action="{{url_for('contact')}}">
+<button class="mail_btn click" >
     <i class="fas fa-envelope"></i>
 </button>
-
+</form>
 {% include 'login.html' %}
 
 {% include 'signup.html' %}

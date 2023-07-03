@@ -59,8 +59,11 @@
 
 <body>
     <br/><br/>
-    <h1><i>Events</i></h1>
-    <br/><br/>
+    <br/><br/></br>
+    <h1 style="color:#555"><i>Events</i></h1>
+    
+    {% if events %}
+
     {% for event in events %}
     
     <div class="dashboard-container">
@@ -68,17 +71,24 @@
             <p><span class="dashboard-label">Title :</span> {{ event.event_title }}</p>
             <p><span class="dashboard-label">Date :</span> {{ event.event_date }}</p>
             <p><span class="dashboard-label">Time:</span> {{ event.event_time }}</p>
-            <p><span class="dashboard-label">Adress :</span> {{ event.event_address }}</p>
+            <p><span class="dashboard-label">Address :</span> {{ event.event_address }}</p>
         </div>
         <div class="dashboard-actions">
             <a href="{{ url_for('event_view', id=event.event_id) }}" class="btn btn-dark">View</a>
         </div>
     </div>
     <br/><br/>
-
+    
+    
     {% endfor %}
 
-</body>
+    {% else %}
+    <div class="empty">
+        <img class="Empty" src="{{url_for('static',filename='images/noevent.gif')}}" >
+        <h3> Oops! currently no events :<span>&#40;</span></h3>
+    </div>
+    {% endif %}
+    
 <br/><br/><br/><br/>
+</body>
 {% endblock %}
-

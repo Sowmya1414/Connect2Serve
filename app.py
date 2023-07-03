@@ -172,7 +172,7 @@ def update(id):
 
 @app.route('/events_page',methods=['POST','GET'])
 def events_page():
-    events_=Events.query.order_by(Events.event_date)
+    events_=Events.query.order_by(Events.event_date).all()
     return render_template('events.html',events=events_)
 
 @app.route('/event_view/<int:id>')
@@ -248,24 +248,28 @@ def delete_event(id):
 @app.route('/your_event/<int:id>')
 @login_required
 def your_event(id):
-    events_=Events.query.order_by(Events.event_date)
+    events_=Events.query.order_by(Events.event_date).all()
     return render_template('your_event.html',events=events_,id=id)
 
 @app.route('/nearby_event')
 @login_required
 def nearby_event():
-    events_=Events.query.order_by(Events.event_date)
+    events_=Events.query.order_by(Events.event_date).all()
     return render_template('nearby_event.html',events=events_)
 
 @app.route('/user_list')
 @login_required
 def user_list():
-    user=Users.query.order_by(Users.name)
+    user=Users.query.order_by(Users.name).all()
     return render_template('user_list.html',user_=user)
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.errorhandler(404)
 def page_not_found(e):

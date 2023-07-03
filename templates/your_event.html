@@ -61,9 +61,13 @@
     <br/><br/>
     
     <br/><br/>
+    <h1 style="color:#555"><i>Your Events</i></h1>
+    {% set execute=false  %}
+    
     {% for event in events %}
 
     {% if event.user.id==id %}
+    {% set execute=true %}
     <div class="dashboard-container">
         <div class="dashboard-info">
             <p><span class="dashboard-label">Title :</span> {{ event.event_title }}</p>
@@ -76,10 +80,20 @@
         </div>
     </div>
     <br/><br/>
+    {% endif %}
+    {% endfor %}
+
     
+    {% if not execute %}
+     <div class="empty">
+        <img class="Empty" src="{{url_for('static',filename='images/noevent.gif')}}" >
+        <h3> Oops! currently there are no events posted by you :<span>&#40;</span></h3>
+    </div>
     {% endif %}
 
-    {% endfor %}
+    
+
+    
 
 </body>
 <br/><br/><br/><br/>
