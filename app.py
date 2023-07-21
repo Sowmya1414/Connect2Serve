@@ -5,7 +5,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_migrate import Migrate
 from flask_login import UserMixin,login_user,LoginManager,login_required,logout_user,current_user
 from datetime import datetime
-from flask_ckeditor import CKEditor,CKEditorField
+
 import traceback
 
 app=Flask(__name__)
@@ -18,7 +18,7 @@ app.config['CKEDITOR_HEIGHT'] = 400
 
 db=SQLAlchemy(app)
 migrate= Migrate(app,db)
-ckeditor=CKEditor(app)
+
 
 login_manager= LoginManager()
 login_manager.init_app(app)
